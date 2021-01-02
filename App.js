@@ -16,6 +16,7 @@ import Tourism from './src/screen/Tourism';
 import Housing from './src/screen/Housing';
 import Foods from './src/screen/Foods';
 import Contact from './src/screen/Contact';
+import Podcasts from './src/screen/Podcasts';
 
 const Stack = createStackNavigator();
 
@@ -23,8 +24,9 @@ const App = () => {
   return (
     <>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator initialRouteName="Home" headerMode="none">
           <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Podcasts" component={Podcasts} />
           <Stack.Screen name="Tourism" component={Tourism} />
           <Stack.Screen name="Housing" component={Housing} />
           <Stack.Screen name="Foods" component={Foods} />

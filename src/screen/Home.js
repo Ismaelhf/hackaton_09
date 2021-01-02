@@ -14,6 +14,7 @@ import {
   Text,
   ScrollView,
   TouchableHighlight,
+  TouchableOpacity,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -21,10 +22,12 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Tourism from '../componenst/Tourism/Tourism';
 import Housing from '../componenst/Housing/Housing';
 import Foods from '../componenst/Foods/Foods';
+import Podcasts from '../componenst/Podcasts/Podcasts';
 
 import {tourismData} from '../data/tourismData';
 import {housingData} from '../data/housingData';
 import {foodsData} from '../data/foodsData';
+import {podcastsData} from '../data/podcastsData';
 
 const Stack = createStackNavigator();
 
@@ -32,36 +35,69 @@ const Home = ({navigation}) => {
   return (
     <>
       <ScrollView>
-        <View style={{flexDirection: 'row'}}>
-          <Image
-            style={styles.banner}
-            source={{
-              uri:
-                'https://www.wamanadventures.com/wp-content/uploads/2019/11/10-D%C3%8DAS-PERU-EXPRESS-%E2%80%93-LIMA-ICA-CUSCO-PUNO.jpg',
-            }}
-          />
-        </View>
         <View style={styles.contenedor}>
-          <Text style={styles.titulo}>Que hacer en Perú</Text>
+          <View style={styles.contentPerfil}>
+            <Text style={styles.titulo1}>Podcasts</Text>
+            <View style={styles.viewImgPerfil}>
+              <Image
+                style={styles.icon}
+                source={{
+                  uri:
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNkNBaoC3KR3yjqYq7pgkgS2VWtoePq98aGw&usqp=CAU',
+                }}
+              />
+            </View>
+          </View>
 
-          <ScrollView horizontal={true}>
+          <View style={styles.contentIcons}>
+            <View style={styles.viewImg}>
+              <Image
+                style={styles.icon}
+                source={{
+                  uri:
+                    'https://icon-icons.com/icons2/1146/PNG/48/1486485552-338big-emoji-face-happy-smile-smiley_81151.png',
+                }}
+              />
+              <Text>Komedia</Text>
+            </View>
+            <View style={styles.viewImg}>
+              <Image
+                style={styles.icon}
+                source={{
+                  uri:
+                    'https://icon-icons.com/icons2/270/PNG/48/Music_29918.png',
+                }}
+              />
+              <Text>Musik</Text>
+            </View>
+            <View style={styles.viewImg}>
+              <Image
+                style={styles.icon}
+                source={{
+                  uri:
+                    'https://icon-icons.com/icons2/1880/PNG/48/iconfinder-gamepad-4341293_120527.png',
+                }}
+              />
+              <Text>Games</Text>
+            </View>
+            <View style={styles.viewImg}>
+              <Image
+                style={styles.icon}
+                source={{
+                  uri:
+                    'https://cdn.icon-icons.com/icons2/625/PNG/128/newspaper_icon-icons.com_57398.png',
+                }}
+              />
+              <Text>Berita</Text>
+            </View>
+          </View>
+          {/* <ScrollView horizontal={true}>
             <Tourism data={tourismData} navigation={navigation} />
-          </ScrollView>
+          </ScrollView> */}
 
-          <Text style={styles.titulo}>Mejores alojamientos</Text>
+          <Text style={styles.titulo}>Populer</Text>
           <View>
-            <Housing data={housingData} navigation={navigation} />
-          </View>
-
-          <Text style={styles.titulo}>Platos</Text>
-          <View style={styles.listado}>
-            <Foods data={foodsData} navigation={navigation} />
-          </View>
-
-          <View style={styles.button}>
-            <TouchableHighlight onPress={() => navigation.navigate('Contact')}>
-              <Text style={styles.contact}>Contactanos</Text>
-            </TouchableHighlight>
+            <Podcasts data={podcastsData} navigation={navigation} />
           </View>
         </View>
       </ScrollView>
@@ -74,10 +110,25 @@ const styles = StyleSheet.create({
     height: 250,
     flex: 1,
   },
+  contentPerfil: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 20,
+  },
+  titulo1: {
+    fontWeight: 'bold',
+    fontSize: 35,
+    marginVertical: 15,
+  },
+  viewImgPerfil: {
+    flex: 1,
+    alignItems: 'flex-end',
+  },
   titulo: {
     fontWeight: 'bold',
-    fontSize: 24,
-    marginVertical: 20,
+    fontSize: 20,
+    marginVertical: 15,
   },
   contact: {
     fontWeight: 'bold',
@@ -87,7 +138,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   contenedor: {
-    marginHorizontal: 10,
+    // marginHorizontal: 10,
+    paddingHorizontal: 20,
+    backgroundColor: '#fff',
+    paddingBottom: 20,
   },
   ciudad: {
     width: 250,
@@ -115,6 +169,19 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     color: '#fff',
     textAlign: 'center',
+  },
+  contentIcons: {
+    flexDirection: 'row',
+    alignContent: 'space-between',
+  },
+  viewImg: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  icon: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
   },
 });
 
